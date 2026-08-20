@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  drink: 'drink'
+  Drink: 'Drink',
+  Order: 'Order'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -78,6 +79,16 @@ export const DrinkScalarFieldEnum = {
 } as const
 
 export type DrinkScalarFieldEnum = (typeof DrinkScalarFieldEnum)[keyof typeof DrinkScalarFieldEnum]
+
+
+export const OrderScalarFieldEnum = {
+  id: 'id',
+  drinkId: 'drinkId',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
 export const SortOrder = {

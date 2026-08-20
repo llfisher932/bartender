@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import cocktailRouter from "./router/cocktail.router.js";
+import cocktailRouter from "./router/drink.router.js";
 import { errorHandler, notFound } from "./middleware/middleware.js";
 
 const app = express();
