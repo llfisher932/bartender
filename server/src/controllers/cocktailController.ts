@@ -1,4 +1,3 @@
-import express from "express";
 import prisma from "../db.js";
 
 type Cocktail = {
@@ -7,9 +6,7 @@ type Cocktail = {
   id: number;
 };
 
-const cocktailController = express.Router();
-
-cocktailController.get("/initialize", async (req, res) => {
+export async function createCocktails() {
   const createdCocktails = await prisma.drink.createMany({
     data: [
       {
@@ -27,13 +24,10 @@ cocktailController.get("/initialize", async (req, res) => {
     ],
   });
 
-  return res.json({
-    message: "Cocktails initialized",
-    createdCocktails,
-  });
-});
+  return createdCocktails;
+}
 
-cocktailController.get("/menu", async (req, res) => {
+export async function getMenu() {
   const menu = await prisma.drink.findMany({
     select: {
       name: true,
@@ -42,7 +36,5 @@ cocktailController.get("/menu", async (req, res) => {
     },
   });
 
-  return res.json({ menu });
-});
-
-export default cocktailController;
+  return menu;
+}
