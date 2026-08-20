@@ -12,9 +12,27 @@ datasource db {
   provider = "postgresql"
 }
 
-model drink {
+model Drink {
   id       Int     @id @default(autoincrement())
   name     String
-  price    Float
+  price    Decimal @db.Decimal(10, 2)
   imageUrl String?
+  orders   Order[]
+
+  @@map("drink")
+}
+
+enum OrderStatus {
+  QUEUED
+  SERVED
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  drink     Drink       @relation(fields: [drinkId], references: [id])
+  drinkId   Int
+  status    OrderStatus @default(QUEUED)
+  createdAt DateTime    @default(now())
+
+  @@map("order")
 }

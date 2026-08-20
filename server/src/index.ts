@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import cocktailRouter from "./router/cocktailRouter.js";
+import cocktailRouter from "./router/cocktail.router.js";
+import { errorHandler, notFound } from "./middleware/middleware.js";
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -14,6 +15,10 @@ app.use(
 app.use(express.json());
 
 app.use("/cocktails", cocktailRouter);
+// app.use("/order", ordersROuter);
+
+app.use(notFound);
+app.use(errorHandler);
 
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
