@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Menu from "./views/menu";
+import Menu from "./views/Menu";
 
 function App() {
   const [page, setPage] = useState("home");

@@ -36,7 +36,7 @@ const Menu = () => {
     <div className="grid-cols-4 gap-5 w-[80%] flex">
       {drinks.map((drink: Drink) => {
         return (
-          <div key={drink.id} className="w-[20%] bg-indigo-300 p-8">
+          <div key={drink.id} className="w-[20%] bg-indigo-700 p-8">
             {drink.name}
           </div>
         );
